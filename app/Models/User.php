@@ -18,9 +18,14 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
         'email',
         'password',
+        'last_name',
+        'first_name',
+        'gender',
+        'phone',
+        'image_profile',
+        'role'
     ];
 
     /**
@@ -41,4 +46,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function transportationAgent(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(TransportationAgent::class);
+    }
+
 }
